@@ -17,6 +17,11 @@ return [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',
         ],
+
+        'db' => [
+            'tablePrefix' => 'tbl_',
+        ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
