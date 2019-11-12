@@ -1,60 +1,118 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+ДЕМОНСТРАЦИОННЫЙ ПРОЕКТ "Литераторы"
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+В данном репозитории представлен демонстрационный проект "Литераторы". Настоящее руководство
+описывает цель и задачи данного проекта, инструкцию по установке и настройке проекта, а так же его краткое описание. 
+Настоящее руководство ни в коем случае и ни при каких обстоятельствах нельзя считать документацией к проекту, и следует 
+рассматривать исключительно как вольное описание проекта.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+Данный проект не стоит рассматривать как исчерпывающий и финальный показатель знаний и навыков автора проекта. Он создан исключительно для
+того, чтобы заинтересованный работодатель смог составить общее представление об уровне владения фреймворком Yii2. 
+Все спорные моменты и вопросы автор готов обсудить с потенциальным работодателем. 
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+Разработка проекта может и будет приостановлена в случае поступления тестового задания от потенциального работодателя.
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+Если вы нашли какую-то ошибку\недочёт\проект не работает\произошла любая другая внештатная ситуация, связанная с проектом,
+а у вас, в свою очередь есть время и желание сообщить об этом автору? Сообщайте, автор будет очень вам признателен.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
+Конфигурация, на которой разрабатывается проект:
 
-DIRECTORY STRUCTURE
+Ubuntu 16.04/xenial
+Apache 2.4.18
+Mysql 5.7.27
+PHP 7.3.9
+
+Цель
 -------------------
 
+Целью проекта "Литераторы" является демонстрация потенциальному работодателю некоторых профессиональных навыков, связанных, по большей части с фреймворком Yii2
+
+Задачи
+-------------------
+
+Каждую задачу данного проекта можно рассматривать как отдельный пример демонстрации степени знаний и умения использовать
+ту или иную возможность фреймворка Yii2, использованную для решения поставленной задачи. Последовательность 
+выполнения задач может быть изменена автором и не соответствовать представленной. Также список задач может пополняться новыми
+(при этом уже существующие задачи так или иначе будут выполнены)
+
+1. Создание сущности Книги. 
+
+2. Создание сущности Авторы.
+
+3. Создание сущности Жанры.
+ 
+4. Создание дополнительной сущности "Сделки".
+
+5. Создание соответствующих связей между выше представленными сущностями.
+
+6. Реализация системы регистрации и аутентификации.
+
+7. Реализация системы авторизации на основе RBAC.
+
+8. Реализация Restfull API в виде отдельного модуля.
+
+9. Реализация т.н "живого поиска" по книгам и авторам.
+
+10. Создание корзины.
+
+11. Реализация CRUD операций для всех сущностей, а так же для корзины.
+
+Установка
+-------------------
+
+Требования
+
+Настройки для Apache
+
 ```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
+
+Настройки виртуального хоста
+
+<VirtualHost *:80>
+    ServerName literators
+    DocumentRoot "/var/www/literators"
+  <Directory "/var/www/literators">
+     AllowOverride all
+  </Directory>
+</VirtualHost>
+
+Настройки файла .htaccess (в корневой директории проекта)
+
+Options +FollowSymlinks
+IndexIgnore */*
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/backend/web/(assets|css)/
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^.*$ backend/web/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/(assets|css|js|images|fonts|uploads|robots.txt)
+RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
+RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
+RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
+RewriteRule ^fonts/(.*)$ frontend/web/fonts/$1 [L]
+RewriteRule ^fonts/(.*)$ frontend/web/uploads/$1 [L]
+RewriteRule ^robots.txt/(.*)$ frontend/web/robots.txt/$1 [L]
+RewriteRule ^(.*)$ frontend/web/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(assets|css|js)/
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ frontend/web/index.php
+
+Настройки файла .htaccess (в директории web(для frontend и backend))
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . index.php
+
 ```
+
