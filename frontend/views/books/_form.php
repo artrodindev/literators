@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\typeahead\Typeahead;
+use yii\web\JsExpression;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\book\Book */
@@ -13,6 +16,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'book_name')->textInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

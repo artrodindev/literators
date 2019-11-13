@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\book\Book;
 use frontend\models\book\BookSearch;
+use yii\db\Query;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -107,6 +108,22 @@ class BooksController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+
+    public function actionSearch($userQuery)
+    {
+         $query = new Query();
+
+         $output = $query->select('id, book_name')
+             ->from('tbl_books')
+             ->where('book_name LIKE "%'. $userQuery .'%"')
+             ->orderBy('book_name')
+            ->all();
+
+         $output = json_encode($output);
+
+         return $output;
     }
 
     /**

@@ -18,10 +18,6 @@ return [
             'baseUrl' => '',
         ],
 
-        'db' => [
-            'tablePrefix' => 'tbl_',
-        ],
-
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
