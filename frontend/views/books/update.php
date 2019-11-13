@@ -3,19 +3,19 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\book\Book */
+/* @var $book frontend\models\book\Book */
 
-$this->title = 'Update Book: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Редактирование: ' . $book->book_name;
+$this->params['breadcrumbs'][] = ['label' => 'Книги', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $book->book_name, 'url' => ['view', 'id' => $book->id]];
+$this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="book-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
+    <?= $this->render('_uform', [
+        'book' => $book,
     ]) ?>
 
 </div>

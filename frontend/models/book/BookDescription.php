@@ -28,7 +28,7 @@ class BookDescription extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['book_id', 'book_description', 'book_price'], 'required'],
+            [['book_description', 'book_price'], 'required'],
             [['book_id'], 'integer'],
             [['book_description'], 'string'],
             [['book_price'], 'number'],
@@ -41,10 +41,8 @@ class BookDescription extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'book_id' => 'Book ID',
-            'book_description' => 'Book Description',
-            'book_price' => 'Book Price',
+            'book_description' => 'Описание книги',
+            'book_price' => 'Цена',
         ];
     }
 }

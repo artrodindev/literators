@@ -28,6 +28,7 @@ class Book extends ActiveRecord
         return [
             [['book_name'], 'required'],
             [['book_name'], 'string', 'max' => 256],
+            [['description'], 'safe'],
         ];
     }
 
@@ -48,5 +49,10 @@ class Book extends ActiveRecord
     public function getDescription()
     {
         return $this->hasOne(BookDescription::className(), ['book_id' => 'id']);
+    }
+
+    public function getbook_description()
+    {
+        return $this->description->book_description;
     }
 }

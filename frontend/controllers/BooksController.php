@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\book\BookDescription;
 use Yii;
 use frontend\models\book\Book;
 use frontend\models\book\BookSearch;
@@ -65,14 +66,23 @@ class BooksController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Book();
+        $book = new Book();
+        $book_description = new BookDescription();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($book->load(Yii::$app->request->post()) &&
+            $book_description->load(Yii::$app->request->post()) &&
+            $book->save()
+        ) {
+
+            $book_description->book_id = $book->id;
+            $book_description->save();
+
+            return $this->redirect(['view', 'id' => $book->id]);
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'book' => $book,
+            'book_description' => $book_description,
         ]);
     }
 
@@ -85,14 +95,20 @@ class BooksController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $book = $this->findModel($id);
+        $book_description = BookDescription::find()->where(['book_id' => $id])->one();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+        if ($book->load(Yii::$app->request->post()) &&
+            $book_description->load(Yii::$app->request->post()) &&
+            $book->save() &&
+            $book_description->save()
+        ) {
+            return $this->redirect(['view', 'id' => $book->id]);
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'book' => $book,
         ]);
     }
 
