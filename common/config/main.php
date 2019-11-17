@@ -9,5 +9,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+
+        'db' => [
+            'tablePrefix' => 'tbl_',
+        ]
     ],
 ];

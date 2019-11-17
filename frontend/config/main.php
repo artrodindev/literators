@@ -17,6 +17,7 @@ return [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',
         ],
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -44,6 +45,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<action:(index|about|contact|signup|login)>' => 'site/<action>',
+                'books/view/<id:\d+>' => 'books/view',
             ],
         ],
 
