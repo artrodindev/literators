@@ -8,15 +8,15 @@ use kartik\typeahead\Typeahead;
 /* @var $searchModel frontend\models\book\BookSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Books';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Книги';
+$this->params['breadcrumbs'][] = 'Книги';
 ?>
 <div class="book-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить книгу', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

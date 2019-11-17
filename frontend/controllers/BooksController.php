@@ -126,8 +126,12 @@ class BooksController extends Controller
         return $this->redirect(['index']);
     }
 
+    /**
+     * @param string $userQuery
+     * @return array|false|string
+     */
 
-    public function actionSearch($userQuery)
+    public function actionSearch(string $userQuery)
     {
          $query = new Query();
 

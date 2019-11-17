@@ -20,7 +20,7 @@ use yii\helpers\HtmlPurifier;
                     <h5>Стоимость: <?=Html::encode($model->description->book_price) ?></h5>
                 </div>
                 <div class="read">
-                    <a href="view/<?= $model->id ?>" class="btn btn-default">Подробнее</a>
+                    <a href="view/<?= Html::encode($model->id) ?>" class="btn btn-default">Подробнее</a>
                 </div>
             </div>
         </div>
