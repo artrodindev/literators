@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\author\Author */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Authors', 'url' => ['index']];
+$this->title = $model->author_lastname . ' ' . $model->author_first_name;
+$this->params['breadcrumbs'][] = ['label' => 'Авторы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы дествительно хотите удалить профиль данного автора?',
                 'method' => 'post',
             ],
         ]) ?>
