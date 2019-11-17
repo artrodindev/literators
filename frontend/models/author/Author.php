@@ -41,18 +41,18 @@ class Author extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'author_first_name' => 'Author First Name',
-            'author_lastname' => 'Author Lastname',
-            'author_midname' => 'Author Midname',
+            'author_first_name' => 'Имя автора',
+            'author_lastname' => 'Фамилия автора',
+            'author_midname' => 'Отчество автора',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAuthorDescriptions()
+    public function getDescription()
     {
-        return $this->hasMany(AuthorDescription::className(), ['author_id' => 'id']);
+        return $this->hasOne(AuthorDescription::className(), ['author_id' => 'id']);
     }
+
 }
