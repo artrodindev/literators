@@ -36,7 +36,7 @@ use yii\helpers\Url;
                 'wildcard' => '%QUERY'
             ],
                 'templates' => [
-                    'notFound' => '<div class="text-danger" style="padding:0 8px">Unable to find repositories for selected query.</div>',
+                    'notFound' => '<div class="text-danger" style="padding:0 8px">По вашему запросу не найдено ни одного совпадения</div>',
                     'suggestion' => new JsExpression("Handlebars.compile('{$template}')")
                 ]
             ]
