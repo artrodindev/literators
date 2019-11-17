@@ -17,7 +17,7 @@ use yii\helpers\HtmlPurifier;
                     <h3><?= Html::a(Html::encode($model->book_name), ['view', 'id' => $model->id]); ?></h3>
                     <h5>Автор(ы): </h5>
                     <h5>Жанр(ы): </h5>
-                    <h5>Стоимость: <?= $model->description->book_price ?></h5>
+                    <h5>Стоимость: <?=Html::encode($model->description->book_price) ?></h5>
                 </div>
                 <div class="read">
                     <a href="view/<?= $model->id ?>" class="btn btn-default">Подробнее</a>

@@ -45,6 +45,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<action:(index|about|contact|signup|login)>' => 'site/<action>',
+                'books/view/<id:\d+>' => 'books/view',
             ],
         ],
 

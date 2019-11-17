@@ -26,10 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
         'itemView' => '_item',
+        'layout' => "{pager}\n{summary}\n{items}\n{pager}",
     ]) ?>
+
 
     <?php Pjax::end(); ?>
 
 </div>
+
 
 
