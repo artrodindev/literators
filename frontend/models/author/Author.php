@@ -2,6 +2,9 @@
 
 namespace frontend\models\author;
 
+use frontend\models\associative\AuthorBook;
+use frontend\models\book\Book;
+use \yii\db\ActiveRecord;
 use Yii;
 
 /**
@@ -14,7 +17,7 @@ use Yii;
  *
  * @property AuthorDescription[] $authorDescriptions
  */
-class Author extends \yii\db\ActiveRecord
+class Author extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -53,6 +56,24 @@ class Author extends \yii\db\ActiveRecord
     public function getDescription()
     {
         return $this->hasOne(AuthorDescription::className(), ['author_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+
+    public function getAuthorBook()
+    {
+        return $this->hasMany(AuthorBook::className(), ['author_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+
+    public function getBooks()
+    {
+        return $this->hasMany(Book::className(), ['id' => 'book_id'])->via('authorBook');
     }
 
 }

@@ -3,6 +3,7 @@
 namespace frontend\models\book;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%book_description}}".
@@ -12,7 +13,7 @@ use Yii;
  * @property string $book_description
  * @property string $book_price
  */
-class BookDescription extends \yii\db\ActiveRecord
+class BookDescription extends ActiveRecord
 {
     /**
      * {@inheritdoc}

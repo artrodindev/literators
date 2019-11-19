@@ -5,6 +5,7 @@ namespace frontend\models\associative;
 use Yii;
 use frontend\models\author\Author;
 use frontend\models\book\Book;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%author_book}}".
@@ -16,7 +17,7 @@ use frontend\models\book\Book;
  * @property Author $author
  * @property Books $book
  */
-class AuthorBook extends \yii\db\ActiveRecord
+class AuthorBook extends ActiveRecord
 {
     /**
      * {@inheritdoc}

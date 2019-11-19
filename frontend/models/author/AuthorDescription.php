@@ -3,6 +3,7 @@
 namespace frontend\models\author;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%author_description}}".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property Authors $author
  */
-class AuthorDescription extends \yii\db\ActiveRecord
+class AuthorDescription extends ActiveRecord
 {
     /**
      * {@inheritdoc}
